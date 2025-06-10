@@ -1,24 +1,33 @@
-<!doctype html>
-<html lang="it">
-<head>
-    <meta charset="utf-8">
-    <title>Wikipizza</title>
-</head>
-<body>
-    <h1>Wikipizza</h1>
-    <form action="/add" method="post" enctype="multipart/form-data">
-        <p>Titolo: <input type="text" name="title" required></p>
-        <p>PDF: <input type="file" name="pdf"></p>
-        <p>Oppure URL: <input type="url" name="url"></p>
-        <p><button type="submit">Aggiungi</button></p>
-    </form>
-    <h2>Pagine</h2>
-    <ul>
-    {% for page in pages %}
-        <li><a href="/page/{{ page.id }}">{{ page.title }}</a></li>
-    {% else %}
-        <li>Nessuna pagina</li>
-    {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<h1><a href="/welcome">Wikipizza</a></h1>
+<form class="mb-4" action="/add" method="post" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label class="form-label">Titolo</label>
+    <input type="text" name="title" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">PDF</label>
+    <input type="file" name="pdf" class="form-control">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Oppure URL</label>
+    <input type="url" name="url" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Aggiungi</button>
+</form>
+<h2>Pagine</h2>
+<ul class="list-group">
+{% for page in pages %}
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    <a href="/page/{{ page.id }}">{{ page.title }}</a>
+    {% if current_user.is_authenticated %}
+      <a href="/edit/{{ page.id }}" class="btn btn-sm btn-secondary">Modifica</a>
+    {% endif %}
+  </li>
+{% else %}
+  <li class="list-group-item">Nessuna pagina</li>
+{% endfor %}
+</ul>
+{% endblock %}
+
