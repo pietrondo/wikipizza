@@ -1,9 +1,10 @@
 # Wikipizza
 
-Una semplice webapp per gestire note in stile wiki. Permette di caricare testi da PDF o URL, sfrutta le API di OpenAI per riassumerli e creare collegamenti tra i concetti. Include registrazione, login, editor Markdown e una piccola interfaccia admin. Ogni pagina è modificabile.
+Una semplice webapp per gestire note in stile wiki. Permette di caricare testi da PDF o URL, sfrutta le API di OpenAI per riassumerli e creare collegamenti tra i concetti. Include registrazione, login, editor Markdown con SimpleMDE e una piccola interfaccia admin tramite Flask‑Admin. Ogni pagina è modificabile.
 
-All'avvio vengono create alcune pagine d'esempio, tra cui **Benvenuto**, visibile anche all'indirizzo `/welcome`.
-L'analisi dei PDF è arricchita da un semplice sistema di RAG: il testo viene suddiviso in paragrafi e memorizzato con gli embedding di OpenAI per future ricerche.
+All'avvio vengono create alcune pagine d'esempio, tra cui **Benvenuto**, visibile anche all'indirizzo `/welcome`. L'analisi dei PDF è arricchita da un semplice sistema di RAG: il testo viene suddiviso in paragrafi e memorizzato con gli embedding di OpenAI per future ricerche.
+
+L'interfaccia è basata su Bootstrap 5 per offrire un aspetto più gradevole.
 
 ## Requisiti
 

@@ -1,16 +1,16 @@
-<!doctype html>
-<html lang="it">
-<head>
-    <meta charset="utf-8">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login</h1>
-    <form method="post">
-        <p>Username: <input type="text" name="username" required></p>
-        <p>Password: <input type="password" name="password" required></p>
-        <p><button type="submit">Entra</button></p>
-    </form>
-    <p><a href="/register">Registrati</a></p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Login</h1>
+<form method="post" class="mb-3">
+  <div class="mb-3">
+    <label class="form-label">Username</label>
+    <input type="text" name="username" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Entra</button>
+</form>
+<p><a href="/register">Registrati</a></p>
+{% endblock %}
