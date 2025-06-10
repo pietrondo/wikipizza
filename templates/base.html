@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>Wikipizza</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    {% block head %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Wikipizza</a>
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav ms-auto">
+      {% if current_user.is_authenticated %}
+        <li class="nav-item"><span class="navbar-text me-2">Benvenuto {{ current_user.username }}</span></li>
+        {% if current_user.is_admin %}
+        <li class="nav-item"><a class="nav-link" href="/admin/">Admin</a></li>
+        {% endif %}
+        <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+      {% else %}
+        <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+        <li class="nav-item"><a class="nav-link" href="/register">Registrati</a></li>
+      {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <div class="alert alert-warning" role="alert">
+      {{ messages[0] }}
+    </div>
+  {% endif %}
+{% endwith %}
+{% block content %}{% endblock %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+{% block scripts %}{% endblock %}
+</body>
+</html>
