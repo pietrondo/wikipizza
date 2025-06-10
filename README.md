@@ -6,6 +6,7 @@ All'avvio vengono create alcune pagine d'esempio, tra cui **Benvenuto**, visibil
 
 L'interfaccia è basata su Bootstrap 5 per offrire un aspetto più gradevole.
 
+
 ## Requisiti
 
 - Python 3.10+
@@ -27,6 +28,7 @@ python app.py
 La prima volta verrà creato il database SQLite `wikipizza.db` con alcune pagine di esempio.
 Visita `http://localhost:5000/welcome` per la pagina introduttiva.
 Registrati e poi imposta `is_admin` manualmente nel database per abilitare l'accesso all'area admin.
+La prima volta verrà creato il database SQLite `wikipizza.db`.
 
 ## Test
 

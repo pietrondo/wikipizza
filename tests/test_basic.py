@@ -1,6 +1,7 @@
 from app import app, Session, User
 
 
+
 def test_index():
     client = app.test_client()
     response = client.get('/')

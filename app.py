@@ -21,13 +21,17 @@ from sqlalchemy import create_engine, Column, Integer, Text, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 from werkzeug.security import generate_password_hash, check_password_hash
+
+from flask import Flask, render_template, request, redirect, url_for
+from sqlalchemy import create_engine, Column, Integer, Text
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 import openai
 import pdfminer.high_level
 import requests
 from bs4 import BeautifulSoup
 import werkzeug
 
-# Werkzeug 3 non ha più l'attributo __version__, ma Flask lo richiede nei test
 if not hasattr(werkzeug, "__version__"):
     werkzeug.__version__ = "3"
 
@@ -114,6 +118,10 @@ def load_user(user_id: str):
     session.close()
     return user
 
+Base.metadata.create_all(engine)
+
+app = Flask(__name__)
+
 
 def extract_text_from_pdf(file_path: str) -> str:
     return pdfminer.high_level.extract_text(file_path)
@@ -181,6 +189,8 @@ def welcome():
 
 @app.route("/add", methods=["POST"])
 @login_required
+
+@app.route("/add", methods=["POST"])
 def add_page():
     session = Session()
     title = request.form.get("title")
@@ -199,6 +209,7 @@ def add_page():
     session.commit()
     create_chunks(text, page.id, session)
     session.commit()
+
     session.close()
     return redirect(url_for("index"))
 
@@ -272,6 +283,7 @@ def edit_page(page_id):
     session.expunge(page)
     session.close()
     return render_template("edit.html", page=page)
+
 
 
 if __name__ == "__main__":
