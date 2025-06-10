@@ -6,6 +6,18 @@
 </head>
 <body>
     <h1>Wikipizza</h1>
+    <p>
+    {% if current_user.is_authenticated %}
+        Benvenuto {{ current_user.username }} -
+        <a href="/logout">Logout</a>
+        {% if current_user.is_admin %}|
+        <a href="/admin/">Admin</a>
+        {% endif %}
+    {% else %}
+        <a href="/login">Login</a> |
+        <a href="/register">Registrati</a>
+    {% endif %}
+    </p>
     <form action="/add" method="post" enctype="multipart/form-data">
         <p>Titolo: <input type="text" name="title" required></p>
         <p>PDF: <input type="file" name="pdf"></p>

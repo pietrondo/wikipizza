@@ -9,6 +9,11 @@
     <div>
     {{ page.content | safe }}
     </div>
-    <p><a href="/">Torna alla lista</a></p>
+    <p>
+        <a href="/">Torna alla lista</a>
+        {% if current_user.is_authenticated %}
+            | <a href="/edit/{{ page.id }}">Modifica</a>
+        {% endif %}
+    </p>
 </body>
 </html>

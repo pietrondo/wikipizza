@@ -1,6 +1,6 @@
 # Wikipizza
 
-Una semplice webapp per gestire note in stile wiki. Permette di caricare testi da PDF o URL, sfrutta le API di OpenAI per riassumerli e creare collegamenti tra i concetti.
+Una semplice webapp per gestire note in stile wiki. Permette di caricare testi da PDF o URL, sfrutta le API di OpenAI per riassumerli e creare collegamenti tra i concetti. Include registrazione, login, editor Markdown e una piccola interfaccia admin.
 
 ## Requisiti
 
@@ -21,6 +21,7 @@ python app.py
 ```
 
 La prima volta verrà creato il database SQLite `wikipizza.db`.
+Registrati e poi imposta `is_admin` manualmente nel database per abilitare l'accesso all'area admin.
 
 ## Test
 

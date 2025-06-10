@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>Modifica pagina</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+</head>
+<body>
+    <h1>Modifica pagina</h1>
+    <form method="post">
+        <p>Titolo: <input type="text" name="title" value="{{ page.title }}" required></p>
+        <textarea name="content" id="editor">{{ page.content }}</textarea>
+        <p><button type="submit">Salva</button></p>
+    </form>
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script>new SimpleMDE({ element: document.getElementById('editor') });</script>
+</body>
+</html>
