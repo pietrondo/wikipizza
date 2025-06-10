@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="utf-8">
+    <title>Wikipizza</title>
+</head>
+<body>
+    <h1>Wikipizza</h1>
+    <form action="/add" method="post" enctype="multipart/form-data">
+        <p>Titolo: <input type="text" name="title" required></p>
+        <p>PDF: <input type="file" name="pdf"></p>
+        <p>Oppure URL: <input type="url" name="url"></p>
+        <p><button type="submit">Aggiungi</button></p>
+    </form>
+    <h2>Pagine</h2>
+    <ul>
+    {% for page in pages %}
+        <li><a href="/page/{{ page.id }}">{{ page.title }}</a></li>
+    {% else %}
+        <li>Nessuna pagina</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
